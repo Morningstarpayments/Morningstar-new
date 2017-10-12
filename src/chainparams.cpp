@@ -57,14 +57,11 @@ public:
         nRPCPort = 29087;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
 
-        // Build the genesis block. Note that the output of the genesis coinbase cannot
-        // be spent as it did not originally exist in the database.
-        //
-        //CBlock(hash=000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=12630d16a97f24b287c8c2594dda5fb98c9e6c70fc61d44191931ea2aa08dc90, nTime=1393221600, nBits=1e0fffff, nNonce=164482, vtx=1, vchBlockSig=)
-        //  Coinbase(hash=12630d16a9, nTime=1393221600, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //    CTxIn(COutPoint(0000000000, 4294967295), coinbase 00012a24323020466562203230313420426974636f696e2041544d7320636f6d6520746f20555341)
-        //    CTxOut(empty)
-        //  vMerkleTree: 12630d16a9
+        // Making genesisgenesis.GetHash() == 000000e066b655415333beed542c27b2b62d0772a63d0c7d31e0ae89beb7a205
+        //genesis.hashMerkleRoot == cf54889511b3a6c9235f1f36a36ee55fadbb489e99b21b3df0cc5ed362262573
+        //genesis.nTime = 1507836976 
+        //genesis.nNonce = 1237540 
+
 
         //Change the text and nTime below if you wish to make a new genesis
         const char* pszTimestamp = "Morningstar will end the Federal Reserve";
@@ -80,30 +77,30 @@ public:
         genesis.nVersion = 1;
         genesis.nTime    = 1507836976;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 1491418;
+        genesis.nNonce   = 1237540;
 
         // Uncommenting this will make a new genesis which you can change the info above
-        uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
-        printf("Making genesis");
-        while (genesis.GetHash() > hashTarget)
-        {
-          ++genesis.nNonce;
-          if (genesis.nNonce == 0)
+        //uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+        //printf("Making genesis");
+        //while (genesis.GetHash() > hashTarget)
+        //{
+          //++genesis.nNonce;
+          //if (genesis.nNonce == 0)
                     {
-                        printf("NONCE WRAPPED, incrementing time");
-                          ++genesis.nTime;
-                    }
-        }
-        printf("genesis.GetHash() == %s\n", genesis.GetHash().ToString().c_str());
-        printf("genesis.hashMerkleRoot == %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        printf("genesis.nTime = %u \n", genesis.nTime);
-        printf("genesis.nNonce = %u \n", genesis.nNonce);
-        hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0"));
-
+            //            printf("NONCE WRAPPED, incrementing time");
+              //            ++genesis.nTime;
+                //    }
+        //}
+        //printf("genesis.GetHash() == %s\n", genesis.GetHash().ToString().c_str());
+        //printf("genesis.hashMerkleRoot == %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //printf("genesis.nTime = %u \n", genesis.nTime);
+        //printf("genesis.nNonce = %u \n", genesis.nNonce);
         //hashGenesisBlock = genesis.GetHash();
-        //assert(hashGenesisBlock == uint256("0x0000075685d3be1f253ce777174b1594354e79954d2a32a6f77fe9cba00e6467"));
-        //assert(genesis.hashMerkleRoot == uint256("0xd2b4345a1b1f0df76ab0cadfa1b44ca52270ff551c43e1b229d25873f0adc90d"));
+        //assert(hashGenesisBlock == uint256("0x0"));
+
+        hashGenesisBlock = genesis.GetHash();
+        assert(hashGenesisBlock == uint256("0x000000e066b655415333beed542c27b2b62d0772a63d0c7d31e0ae89beb7a205"));
+        assert(genesis.hashMerkleRoot == uint256("0xcf54889511b3a6c9235f1f36a36ee55fadbb489e99b21b3df0cc5ed362262573"));
 
         //vSeeds.push_back(CDNSSeedData("bbaynode (nyc)", "104.236.208.150"));
              

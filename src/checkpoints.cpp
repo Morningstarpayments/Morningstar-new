@@ -25,9 +25,7 @@ namespace Checkpoints
     //    timestamp before)
     // + Contains no strange transactions
     //
-    static MapCheckpoints mapCheckpoints =
-        boost::assign::map_list_of
-    ;
+    static MapCheckpoints mapCheckpoints;
 
     // TestNet has no checkpoints
     static MapCheckpoints mapCheckpointsTestnet;

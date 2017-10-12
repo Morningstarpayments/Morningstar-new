@@ -10,7 +10,7 @@ function realpath
 
 SCRIPT_PATH="$(realpath ""$0"")"
 PATCH_PATH="${SCRIPT_PATH/sh/patch}"
-BASE_DIR="$HOME/Morningstar"
+BASE_DIR="$HOME"
 
 function force
 {
@@ -41,12 +41,12 @@ function reset
     mkdir -p "$BASE_DIR"
     cd "$BASE_DIR"
 
-    git clone https://github.com/dzimbeck/Morningstar
+    git clone https://github.com/Morningstarpayments/Morningstar-new
     
-    #cd src/leveldb
-    #chmod 755 build_detect_platform
-    #make
-    #make libmemenv.a
+    cd src/leveldb
+    chmod 755 build_detect_platform
+    make
+    make libmemenv.a
     cp LevelDB/libleveldb.a src/leveldb/libleveldb.a
     cp LevelDB/libmemenv.a src/leveldb/libmemenv.a
     #cd Morningstar
