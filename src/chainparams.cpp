@@ -57,7 +57,7 @@ public:
         nRPCPort = 29087;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
 
-        // Making genesisgenesis.GetHash() == 000000e066b655415333beed542c27b2b62d0772a63d0c7d31e0ae89beb7a205
+        // Making genesis genesis.GetHash() == 000000e066b655415333beed542c27b2b62d0772a63d0c7d31e0ae89beb7a205
         //genesis.hashMerkleRoot == cf54889511b3a6c9235f1f36a36ee55fadbb489e99b21b3df0cc5ed362262573
         //genesis.nTime = 1507836976 
         //genesis.nNonce = 1237540 
@@ -84,12 +84,12 @@ public:
         //printf("Making genesis");
         //while (genesis.GetHash() > hashTarget)
         //{
-          //++genesis.nNonce;
-          //if (genesis.nNonce == 0)
-                    {
-            //            printf("NONCE WRAPPED, incrementing time");
-              //            ++genesis.nTime;
-                //    }
+        //++genesis.nNonce;
+        //if (genesis.nNonce == 0)
+        //           {
+        //            printf("NONCE WRAPPED, incrementing time");
+        //            ++genesis.nTime;
+        //    }
         //}
         //printf("genesis.GetHash() == %s\n", genesis.GetHash().ToString().c_str());
         //printf("genesis.hashMerkleRoot == %s\n", genesis.hashMerkleRoot.ToString().c_str());
@@ -103,7 +103,8 @@ public:
         assert(genesis.hashMerkleRoot == uint256("0xcf54889511b3a6c9235f1f36a36ee55fadbb489e99b21b3df0cc5ed362262573"));
 
         //vSeeds.push_back(CDNSSeedData("bbaynode (nyc)", "104.236.208.150"));
-             
+        vFixedSeeds.clear();
+        vSeeds.clear();
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25);
@@ -114,7 +115,7 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
-        nLastPOWBlock = 1000;
+        nLastPOWBlock = 5;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }

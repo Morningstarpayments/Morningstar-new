@@ -972,7 +972,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 
         if(pindexBest->nHeight == 1)
         {
-            nSubsidy = 1000000000 * COIN; // 1 billion coins for ico
+            nSubsidy = 40000000 * COIN; // 40 million coins for swap
         }
 
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
